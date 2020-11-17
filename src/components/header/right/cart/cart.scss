@@ -1,0 +1,43 @@
+.cart {
+    padding-left: 1rem;
+    &__bt {
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        transition: all 0.4s ease-in-out 0s;
+        & > svg {
+            font-size: 1.4rem;
+            background: none;
+        }
+    }
+    &__bt:hover {
+        transform: translateY(-0.3rem);
+    }
+}
+@media screen and(max-width:1023px) {
+    .cart {
+        padding-left: 0.5rem;
+    }
+}
+@media screen and(max-width:740px) and(min-width:526px) {
+    .cart {
+        padding-left: 1rem;
+        &__bt {
+            & > svg {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+@media screen and(max-width:525px) {
+    .cart {
+        padding-left: 1rem;
+        &__bt {
+            & > svg {
+                font-size: 1rem;
+            }
+        }
+    }
+}

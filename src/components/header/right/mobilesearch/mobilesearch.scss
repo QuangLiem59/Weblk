@@ -1,0 +1,98 @@
+.mobilesearchform {
+    position: fixed;
+    padding: 1rem;
+    top: 0%;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background: black;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out 0s;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__back {
+        flex: 2;
+        text-align: center;
+        margin-bottom: 0;
+        & > svg {
+            font-size: 2.3rem;
+            background: none;
+        }
+    }
+    &__sm {
+        flex: 2;
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        background: rgb(145, 145, 145);
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border: 0.1rem solid rgb(87, 87, 87);
+        border-radius: 2rem;
+        transition: all 0.3s ease-in-out 0s;
+        outline: none !important;
+        overflow: hidden;
+        & > svg {
+            font-size: 1.5rem;
+            background: none;
+        }
+        &:hover {
+            transform: scale(0.95);
+            box-shadow: 0 0 1rem rgb(145, 145, 145);
+        }
+    }
+    &__search-input {
+        flex: 8;
+        opacity: 1;
+        padding: 0.2rem 0.5rem;
+        margin: 0.5rem;
+        transition: all 0.3s ease-in-out 0s;
+        font-size: 1.3rem;
+        line-height: 2.5rem;
+        outline: none;
+        background: white;
+        color: black;
+        border-radius: 1rem;
+        border: 1px solid #bdbdbd;
+    }
+}
+@media screen and(max-width:525px) {
+    .mobilesearchform {
+        padding: 0.2rem;
+        &__back {
+            flex: 2;
+            text-align: center;
+            margin-bottom: 0;
+            & > svg {
+                font-size: 1.7rem;
+            }
+        }
+        &__sm {
+            flex: 2;
+            padding: 0.2rem;
+            margin: 0.2rem;
+            & > svg {
+                font-size: 1.1rem;
+                background: none;
+            }
+            &:hover {
+                transform: scale(0.95);
+                box-shadow: 0 0 1rem rgb(145, 145, 145);
+            }
+        }
+        &__search-input {
+            flex: 8;
+            opacity: 1;
+            padding: 0 0.5rem;
+            margin: 0.2rem;
+            font-size: 1rem;
+            line-height: 2.3rem;
+            min-width: 8rem;
+        }
+    }
+}

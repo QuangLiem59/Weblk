@@ -1,0 +1,99 @@
+body {
+    font-size: 1.3rem;
+    color: rgba($color: #f5ecec, $alpha: 1);
+    font-weight: 400;
+    box-sizing: border-box;
+}
+.topmenu {
+    height: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba($color: #111111, $alpha: 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    &__container {
+        max-width: 1360px;
+        width: 100%;
+        height: 100%;
+        box-sizing: inherit;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        &__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            &__logo {
+                flex: 1;
+                text-align: center;
+                & > a {
+                    font-size: 2rem;
+                    transition: all 0.2s ease-in-out 0s;
+                    cursor: pointer;
+                    color: rgba($color: #ffffff, $alpha: 1);
+                    text-decoration: none;
+                }
+            }
+            &__menu {
+                flex: 3;
+            }
+            &__right {
+                flex: 2;
+            }
+            &__logo:hover {
+                text-shadow: 0 0 0.5rem #ffffff;
+            }
+        }
+    }
+}
+@media screen and(max-width:1023px) {
+    .topmenu {
+        &__container {
+            &__content {
+                &__logo {
+                    flex: 1;
+                }
+                &__menu {
+                    display: none;
+                }
+                &__right {
+                    flex: 5;
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:740px) and(min-width:526px) {
+    .topmenu {
+        &__container {
+            &__content {
+                &__logo {
+                    & > a {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:525px) {
+    .topmenu {
+        &__container {
+            &__content {
+                &__logo {
+                    & > a {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

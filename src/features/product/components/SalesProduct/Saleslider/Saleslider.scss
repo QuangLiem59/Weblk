@@ -1,0 +1,93 @@
+.saleslider__ctn {
+    width: 100%;
+    padding: 0 8rem;
+    position: relative;
+    overflow: hidden;
+    &__slider {
+        &__slide {
+            outline: none;
+        }
+    }
+    &__prevbt,
+    &__nextbt {
+        width: 2.5rem;
+        height: 18%;
+        background-color: transparent;
+        color: red;
+        position: absolute;
+        cursor: pointer;
+        outline: none !important;
+        border: none;
+        transition: all 0.3s ease-in-out 0s;
+    }
+    &__prevbt > img,
+    &__nextbt > img {
+        width: 100%;
+        height: 100%;
+        background-color: #222121;
+        border: 1px solid #222121;
+        border-radius: 5rem;
+        padding: 25% 25%;
+        transition: all 0.2s ease-in-out 0s;
+    }
+    &__prevbt:hover > img,
+    &__nextbt:hover > img {
+        box-shadow: 0 0 1rem #383737;
+    }
+    &__prevbt {
+        top: 41%;
+        left: 5%;
+    }
+    &__nextbt {
+        top: 41%;
+        right: 5%;
+    }
+}
+@media screen and(max-width:1300px) and(min-width:1024px) {
+    .saleslider__ctn {
+        padding: 0 6rem;
+    }
+}
+@media screen and(max-width:1023px) and(min-width:771px) {
+    .saleslider__ctn {
+        padding: 0 5rem;
+    }
+}
+@media screen and(max-width:770px) and(min-width:639px) {
+    .saleslider__ctn {
+        padding: 0 4rem;
+    }
+}
+@media screen and(max-width:638px) and(min-width:535px) {
+    .saleslider__ctn {
+        padding: 0 8rem;
+    }
+}
+@media screen and(max-width:534px) and(min-width:480px) {
+    .saleslider__ctn {
+        padding: 0 5.5rem;
+    }
+}
+@media screen and(max-width:479px) and (min-width: 382px) {
+    .saleslider__ctn {
+        padding: 0 4rem;
+    }
+}
+@media screen and(max-width:381px) {
+    .saleslider__ctn {
+        padding: 0 2rem;
+        &__prevbt,
+        &__nextbt {
+            width: 2rem;
+            height: 10%;
+        }
+        &__prevbt {
+            top: 45%;
+            left: 0;
+        }
+        &__nextbt {
+            top: 45%;
+            right: 0;
+        }
+    }
+}

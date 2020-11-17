@@ -1,0 +1,44 @@
+$primary: #4cf0c4;
+.Loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(233, 233, 233);
+    z-index: 9999999;
+    .Loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(2);
+        & > svg {
+            & > polyline {
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                &#back {
+                    stroke: rgba($primary, 0.3);
+                }
+
+                &#front {
+                    stroke: $primary;
+                    stroke-dasharray: 12, 36; //Dash 12 & Gap 36
+                    stroke-dashoffset: 48;
+                    animation: dash 1s linear infinite;
+                }
+            }
+        }
+    }
+}
+
+@keyframes dash {
+    65% {
+        opacity: 0;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}

@@ -1,0 +1,529 @@
+.profilebox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border-bottom: 0.03rem solid #bbbbbb;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    &__mobilebutton {
+        display: none;
+    }
+
+    &__img {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 1rem;
+        overflow: hidden;
+        &__box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            &__listimage {
+                flex: 15%;
+                max-width: 15%;
+                &__list {
+                    display: flex;
+                    flex-direction: column;
+                    max-height: 20rem;
+                    overflow-y: auto;
+                    list-style: none;
+
+                    &__item {
+                        width: 100%;
+                        height: auto;
+                        vertical-align: middle;
+                        border: 0.08rem solid black;
+                        border-radius: 0.5rem;
+                        margin-bottom: 1rem;
+                        padding: 0.5rem;
+                        cursor: pointer;
+                        & > img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 0.5rem;
+                            object-fit: contain;
+                            transition: all 0.3s ease-in-out 0s;
+                        }
+                        &:hover > img {
+                            transform: scale(1.1);
+                        }
+                        &__active {
+                            border: 0.1rem solid rgb(0, 210, 238);
+                        }
+                    }
+                }
+            }
+            &__mainimage {
+                flex: 85%;
+                max-width: 85%;
+                &__image {
+                    width: 100%;
+                    height: 28rem;
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+
+                    transition: all 0.3s ease-in-out 0s;
+                    // & > img {
+                    //     width: 100%;
+                    //     height: auto;
+                    //     vertical-align: middle;
+                    //     object-fit: contain;
+                    //     transition: all 0.3s ease-in-out 0s;
+                    // }
+                }
+            }
+        }
+    }
+    &__information {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 1rem;
+        overflow: hidden;
+        &__name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: black;
+            padding-bottom: 0.5rem;
+        }
+        &__brandname {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: black;
+            text-transform: uppercase;
+            padding-bottom: 0.5rem;
+            margin: 0;
+            & > a {
+                color: rgb(47, 221, 178);
+                text-decoration: none !important;
+            }
+        }
+        &__price {
+            width: 100%;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-bottom: 1rem;
+            &__sale {
+                font-size: 2.8rem;
+                color: rgb(226, 21, 21);
+                & > span {
+                    text-decoration: underline;
+                }
+            }
+            &__origin {
+                font-size: 1.2rem;
+                color: #bdbdbd;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+
+                &__left {
+                    text-decoration: line-through solid black;
+                    margin-right: 5rem;
+                }
+                &__left span {
+                    text-decoration: underline;
+                }
+                &__right {
+                    border-radius: 2rem;
+                    background: rgb(211, 0, 0);
+                    color: white;
+                    padding: 0 1rem;
+                    font-size: 1rem;
+                    line-height: 1.8rem;
+                }
+            }
+        }
+        &__warranties {
+            color: black;
+            padding-bottom: 2rem;
+            font-size: 1.1rem;
+            & > span {
+                margin-left: 0.5rem;
+            }
+        }
+        &__button {
+            margin-bottom: 2rem;
+            &__atc {
+                font-size: 1.2rem;
+                line-height: 2rem;
+                padding: 0.8rem 1.8rem;
+                background: none;
+                color: rgb(0, 110, 92);
+                border: 0.2rem solid rgb(0, 110, 92);
+                border-radius: 2rem;
+                transition: all 0.3s ease-in-out 0s;
+
+                position: relative;
+                overflow: hidden;
+                & > span {
+                    margin-left: 0.5rem;
+                }
+                &:hover {
+                    color: white;
+                    background: rgb(0, 110, 92);
+                    box-shadow: 0 0 0.8rem rgb(0, 110, 92);
+                    transform: scale(0.95);
+                }
+            }
+        }
+        &__info {
+            font-size: 1rem;
+            font-weight: 500;
+            color: black;
+            margin-bottom: 2rem;
+            &__list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                line-height: 1.3rem;
+                list-style: none;
+                & > li {
+                    padding-bottom: 0.5rem;
+                    & > span {
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:1023px) and(min-width:740px) {
+    .profilebox {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        &__img {
+            padding: 0 1rem;
+            &__box {
+                display: flex;
+                justify-content: center;
+                flex-direction: column-reverse;
+                &__listimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    padding: 0 1rem;
+                    &__list {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        max-height: 6.5rem;
+                        height: 6.5rem;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        padding-bottom: 0.1rem;
+                        align-content: flex-start;
+                        &__item {
+                            width: 5.5rem;
+                            height: 100%;
+                            margin-right: 1rem;
+                            margin-bottom: 0;
+                            padding: 0.3rem;
+                        }
+                    }
+                }
+                &__mainimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    &__image {
+                        height: 25rem;
+                    }
+                }
+            }
+        }
+        &__information {
+            &__name {
+                font-size: 1.8rem;
+            }
+            &__brandname {
+                font-size: 1rem;
+            }
+            &__price {
+                &__sale {
+                    font-size: 2.5rem;
+                }
+                &__origin {
+                    font-size: 1.1rem;
+                    &__right {
+                        font-size: 0.9rem;
+                        line-height: 1.6rem;
+                    }
+                }
+            }
+            &__warranties {
+                padding-bottom: 1.5rem;
+                font-size: 1rem;
+                & > span {
+                    margin-left: 0.5rem;
+                }
+            }
+            &__button {
+                margin-bottom: 1.8rem;
+                &__atc {
+                    font-size: 1.1rem;
+                    line-height: 1.8rem;
+                    padding: 0.7rem 1.6rem;
+                }
+            }
+            &__info {
+                font-size: 0.9rem;
+                margin-bottom: 1.8rem;
+                &__list {
+                    line-height: 1.2rem;
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:739px) and(min-width:380px) {
+    .profilebox {
+        flex-direction: column;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        &__mobilebutton {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #8b0000;
+            height: 3rem;
+            z-index: 9999999999;
+            transition: all 0.3s ease-in-out 0s;
+            &:hover {
+                box-shadow: 0 0 1rem #682600;
+                background: #d10808;
+            }
+            &__atc {
+                width: 100%;
+                height: 100%;
+                background: none;
+                border: none;
+                color: white;
+                transition: all 0.3s ease-in-out 0s;
+                font-size: 1rem;
+                & > span {
+                    margin-left: 1rem;
+                    border: none;
+                }
+                &:hover {
+                    transform: scale(0.95);
+                }
+            }
+        }
+        &__img {
+            padding: 0 0.7rem;
+            flex: 100%;
+            max-width: 100%;
+            &__box {
+                display: flex;
+                justify-content: center;
+                flex-direction: column-reverse;
+                &__listimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    padding: 0 2.5rem;
+                    &__list {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        max-height: 5rem;
+                        height: 5rem;
+                        width: auto;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        padding-bottom: 0.1rem;
+                        align-content: flex-start;
+                        &__item {
+                            width: 4.5rem;
+                            height: 100%;
+                            margin-right: 0.7rem;
+                            margin-bottom: 0;
+                            padding: 0.2rem;
+                        }
+                    }
+                }
+                &__mainimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    &__image {
+                        height: 20rem;
+                    }
+                }
+            }
+        }
+        &__information {
+            flex: 100%;
+            max-width: 100%;
+            &__name {
+                font-size: 1.5rem;
+            }
+            &__brandname {
+                font-size: 0.9rem;
+            }
+            &__price {
+                &__sale {
+                    font-size: 1.8rem;
+                }
+                &__origin {
+                    font-size: 0.9rem;
+                    &__right {
+                        font-size: 0.8rem;
+                        line-height: 1.5rem;
+                    }
+                }
+            }
+            &__warranties {
+                padding-bottom: 1.5rem;
+                font-size: 0.9rem;
+                & > span {
+                    margin-left: 0.5rem;
+                }
+            }
+            &__button {
+                display: none;
+                margin-bottom: 1.8rem;
+                &__atc {
+                    font-size: 1.1rem;
+                    line-height: 1.8rem;
+                    padding: 0.7rem 1.6rem;
+                }
+            }
+            &__info {
+                font-size: 0.9rem;
+                margin-bottom: 1.8rem;
+                &__list {
+                    line-height: 1.2rem;
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:379px) {
+    .profilebox {
+        flex-direction: column;
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.7rem;
+        &__mobilebutton {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #8b0000;
+            height: 3rem;
+            z-index: 9999999999;
+            transition: all 0.3s ease-in-out 0s;
+            &:hover {
+                box-shadow: 0 0 1rem #682600;
+                background: #d10808;
+            }
+            &__atc {
+                width: 100%;
+                height: 100%;
+                background: none;
+                border: none;
+                color: white;
+                transition: all 0.3s ease-in-out 0s;
+                font-size: 1rem;
+                & > span {
+                    margin-left: 1rem;
+                    border: none;
+                }
+                &:hover {
+                    transform: scale(0.95);
+                }
+            }
+        }
+        &__img {
+            padding: 0 0.7rem;
+            flex: 100%;
+            max-width: 100%;
+            &__box {
+                display: flex;
+                justify-content: center;
+                flex-direction: column-reverse;
+                &__listimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    padding: 0 1.5rem;
+                    &__list {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        max-height: 4rem;
+                        height: 4rem;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        padding-bottom: 0.1rem;
+                        align-content: flex-start;
+                        &__item {
+                            width: 3.5rem;
+                            height: 100%;
+                            margin-right: 0.5rem;
+                            margin-bottom: 0;
+                            padding: 0.2rem;
+                        }
+                    }
+                }
+                &__mainimage {
+                    flex: 100%;
+                    max-width: 100%;
+                    &__image {
+                        height: 20rem;
+                    }
+                }
+            }
+        }
+        &__information {
+            flex: 100%;
+            max-width: 100%;
+            &__name {
+                font-size: 1.2rem;
+            }
+            &__brandname {
+                font-size: 0.8rem;
+            }
+            &__price {
+                &__sale {
+                    font-size: 1.4rem;
+                }
+                &__origin {
+                    font-size: 0.8rem;
+                    &__right {
+                        font-size: 0.7rem;
+                        line-height: 1.3rem;
+                    }
+                }
+            }
+            &__warranties {
+                padding-bottom: 1rem;
+                font-size: 0.8rem;
+                & > span {
+                    margin-left: 0.5rem;
+                }
+            }
+            &__button {
+                display: none;
+                margin-bottom: 1.8rem;
+                &__atc {
+                    font-size: 1.1rem;
+                    line-height: 1.8rem;
+                    padding: 0.7rem 1.6rem;
+                }
+            }
+            &__info {
+                font-size: 0.8rem;
+                margin-bottom: 1.2rem;
+                &__list {
+                    line-height: 1rem;
+                }
+            }
+        }
+    }
+}

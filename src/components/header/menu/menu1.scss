@@ -1,0 +1,45 @@
+.menu__content {
+    font-family: "Montserrat", sans-serif;
+    &__submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease-in-out 0s;
+        transform: translateY(1rem);
+    }
+    & > ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 0;
+        margin: 0;
+        & > li {
+            padding: 1rem 1rem;
+            & > a {
+                line-height: 5px;
+                text-decoration: none;
+                font-size: 1rem;
+                color: #fff;
+                & > span {
+                    transition: all 0.3s ease-in-out 0s;
+                }
+            }
+            &:hover span {
+                cursor: pointer;
+                color: #bdbdbd;
+            }
+            &:hover .menu__content__submenu {
+                opacity: 1;
+                max-height: 99999px;
+                transform: translateY(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,113 @@
+.searchform {
+    position: relative;
+    padding-right: 2.3rem;
+    padding-left: 2.3rem;
+    &__sm {
+        position: absolute;
+        top: 0;
+        right: 0;
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        & > svg {
+            font-size: 1.4rem;
+            background: none;
+        }
+    }
+    & > .search-input {
+        width: 100%;
+        opacity: 1;
+        transition: all 0.3s ease-in-out 0s;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid white;
+        background: none;
+        color: white;
+    }
+    & > .hide-search {
+        width: 0%;
+        opacity: 0;
+        transition: all 0.3s ease-in-out 0s;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid white;
+        background: none;
+        color: white;
+    }
+}
+@media screen and(max-width:740px) and(min-width:526px) {
+    .searchform {
+        padding-right: 2rem;
+        padding-left: 2rem;
+        &__sm {
+            & > svg {
+                font-size: 1.2rem;
+            }
+        }
+        & > .search-input {
+            width: 100%;
+            opacity: 1;
+            transition: all 0.3s ease-in-out 0s;
+            font-size: 1rem;
+            line-height: 1.3rem;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid white;
+            background: none;
+            color: white;
+        }
+        & > .hide-search {
+            width: 0%;
+            opacity: 0;
+            transition: all 0.3s ease-in-out 0s;
+            font-size: 1rem;
+            line-height: 1.3rem;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid white;
+            background: none;
+            color: white;
+        }
+    }
+}
+@media screen and(max-width:525px) {
+    .searchform {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        &__sm {
+            & > svg {
+                font-size: 1rem;
+            }
+        }
+        & > .search-input {
+            width: 100%;
+            opacity: 1;
+            transition: all 0.3s ease-in-out 0s;
+            font-size: 0.9rem;
+            line-height: 1.1rem;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid white;
+            background: none;
+            color: white;
+        }
+        & > .hide-search {
+            width: 0%;
+            opacity: 0;
+            transition: all 0.3s ease-in-out 0s;
+            font-size: 0.9rem;
+            line-height: 1.1rem;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid white;
+            background: none;
+            color: white;
+        }
+    }
+}

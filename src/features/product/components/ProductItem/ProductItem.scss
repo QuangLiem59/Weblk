@@ -1,0 +1,265 @@
+.ProductItem {
+    flex: 20%;
+    max-width: 20%;
+    padding: 0 1rem;
+    overflow: hidden;
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s ease-in-out 0s;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        &__body {
+            &__boximage {
+                width: 100%;
+                height: 15rem;
+                margin-bottom: 0.3rem;
+                border-radius: 0.5rem 0.5rem 0 0;
+                overflow: hidden;
+                position: relative;
+                & > img {
+                    width: 100%;
+                    height: 100%;
+                    // image-rendering: pixelated;
+                    // vertical-align: text-bottom;
+                    object-fit: contain;
+                    border-radius: 0.5rem;
+                    transition: all 0.5s ease-in-out 0s;
+                }
+                &__overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(100, 90, 90, 0.8);
+                    transition: all 0.3s ease-in-out 0s;
+                    visibility: hidden;
+                    opacity: 0;
+                    &__salespercent {
+                        position: absolute;
+                        top: 10%;
+                        width: 100%;
+                        height: 20%;
+                        &__box {
+                            width: 35%;
+                            font-weight: 400;
+                            font-size: 17px;
+                            background-color: rgba(252, 0, 0, 0.8);
+                            text-align: center;
+                            border-radius: 1rem;
+                            transition: all 0.3s ease-in-out 0s;
+                            box-shadow: 0 0 5px #bdbdbd;
+                        }
+                    }
+                    &__button {
+                        width: 100%;
+                        height: 100%;
+
+                        display: flex;
+                        flex-flow: row nowrap;
+                        align-items: center;
+                        justify-content: center;
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out 0s;
+                        transform: translateY(1rem);
+                        & > div {
+                            padding: 0 0.5rem;
+                        }
+                    }
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+                &:hover > img {
+                    transform: scale(1.35);
+                }
+                &:hover > &__overlay,
+                &:hover &__overlay__button {
+                    transform: translateY(0);
+                    visibility: visible;
+                    opacity: 1;
+                }
+                &:hover &__overlay__salespercent__box {
+                    margin-left: 32.5%;
+                }
+            }
+
+            &__boxcontent {
+                padding: 0 1rem;
+                margin-bottom: 0.1rem;
+                height: 2.6rem;
+                overflow: hidden;
+            }
+            &__boxcontent > a > h5 {
+                font-weight: 500;
+                font-size: 0.9rem;
+                line-height: 1.3rem;
+                color: black;
+                min-height: 2.6rem;
+                text-align: center;
+                transition: all 0.2s ease-in-out 0s;
+            }
+            &__boxcontent > a {
+                text-decoration: none;
+            }
+            &__boxcontent > a:hover > h5 {
+                color: #bdbdbd;
+            }
+        }
+        &__foot {
+            padding: 0 0.6rem 0.6rem 0.6rem;
+            min-height: 3.8rem;
+            &__sale {
+                line-height: 1.5rem;
+                font-size: 19px;
+                text-align: center;
+                margin-bottom: 0.3rem;
+                color: rgba($color: #2c2c2c, $alpha: 1);
+                font-style: normal;
+                font-weight: 500;
+                cursor: default;
+                &__up {
+                    color: red;
+                }
+                &__down {
+                    font-size: 15px;
+                    color: #bdbdbd;
+                    font-weight: 400;
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+    &:hover > &__box {
+        box-shadow: 0 0 1rem #bdbdbd;
+    }
+}
+#vnd {
+    text-decoration: underline;
+}
+@media screen and(max-width:1250px) and(min-width:1024px) {
+    .ProductItem {
+        flex: 25%;
+        max-width: 25%;
+    }
+}
+@media screen and(max-width:1023px) and(min-width:740px) {
+    .ProductItem {
+        flex: 33.333%;
+        max-width: 33.333%;
+    }
+}
+@media screen and(max-width:739px) and(min-width:526px) {
+    .ProductItem {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+@media screen and(max-width:525px) and(min-width:380px) {
+    .ProductItem {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 0.5rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 11rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 13px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.15rem;
+                                & > a > button {
+                                    font-size: 0.75rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.5rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.4rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.85rem;
+                    line-height: 1.2rem;
+                    min-height: 2.4rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.4rem 0.4rem 0.4rem;
+                min-height: 2.5rem;
+                &__sale {
+                    line-height: 1.25rem;
+                    font-size: 15px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:379px) {
+    .ProductItem {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 0.1rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 10rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 12px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.1rem;
+                                & > a > button {
+                                    font-size: 0.65rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.5rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.2rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.8rem;
+                    line-height: 1.1rem;
+                    min-height: 2.2rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.3rem 0.3rem 0.3rem;
+                min-height: 2.4rem;
+                &__sale {
+                    line-height: 1.2rem;
+                    font-size: 13px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
