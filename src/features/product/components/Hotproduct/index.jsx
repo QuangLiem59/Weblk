@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './hotproducts.scss';
 import ProductItem from '../ProductItem';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getProduct } from 'features/product/productslice';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -10,7 +10,7 @@ HotProduct.propTypes = {
 
 };
 
-function HotProduct(props) {
+function HotProduct() {
     const dispatch = useDispatch();
     const [listHotProduct, setListHotProduct] = useState([]);
     const [params, setParams] = useState({ page: '1', limit: '10', Hots: 'true' });
@@ -37,7 +37,7 @@ function HotProduct(props) {
                     }
                 </div>
                 <div className='mainhotproduct__container__seeall'>
-                    <Link to='/'>
+                    <Link to='/home/category/status/Hots'>
                         <button className='mainhotproduct__container__seeall__bt'>
                             Xem Tất Cả
                         </button>

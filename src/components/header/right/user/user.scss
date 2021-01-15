@@ -6,7 +6,7 @@
         border: none;
         cursor: pointer;
         color: rgb(255, 255, 255);
-        transition: all 0.4s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
         & > svg {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
         }
     }
     &__bt:hover {
-        transform: translateY(-0.3rem);
+        color: #979797;
     }
 }
 @media screen and(max-width:1023px) {

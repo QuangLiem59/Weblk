@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './profileproduct.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faHandHolding, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { message } from 'antd';
+import { addToCart, getUserInfor } from 'features/cart/userslice';
+import { useDispatch, useSelector } from 'react-redux';
 
 Profileproduct.propTypes = {
     initialValues: PropTypes.object,
@@ -16,6 +19,43 @@ Profileproduct.defaultProps = {
 function Profileproduct(props) {
     const { initialValues } = props;
     const [srcimage, setSrcimage] = useState("");
+
+    const dispatch = useDispatch();
+    const cart = useSelector(state => state.user.cart);
+    const token = localStorage.getItem('AccessToken');
+    const history = useHistory();
+    const isLoading = useSelector(state => state.user.loading);
+    const [isSelected, setIsSelected] = useState(false);
+
+    const handleAddToCart = async (initialValues) => {
+        if (!token) {
+            return (
+                message.warning('Please Login to use cart!'),
+                history.push('/user/login')
+            )
+        }
+        if (isSelected) {
+            return (
+                message.warning('This product has been added to cart!')
+            )
+        }
+        const check = cart.every(item => {
+            return item._id !== initialValues._id
+        })
+        if (check) {
+            try {
+                await dispatch(addToCart({ cart: [...cart, { ...initialValues, quantity: 1 }] }));
+                await dispatch(getUserInfor());
+                setIsSelected(true);
+                message.success('Product added!')
+            } catch (err) {
+                message.warning(err.response.data.message);
+            }
+        }
+        else {
+            message.warning('This product has been added to cart!')
+        }
+    }
 
     // if (initialValues.Image) {
     //     setSrcimage(initialValues.Image[0].url)
@@ -65,8 +105,8 @@ function Profileproduct(props) {
                 <h2 className="profilebox__information__name">{initialValues.Name}</h2>
                 <h5 className="profilebox__information__brandname">
                     Thương Hiệu :
-                    <Link to={`/home/producer/${initialValues.Producer}`}>
-                        <b> {initialValues.Producer}</b>
+                    <Link to={`/home/category/producer/${initialValues.Producer ? initialValues.Producer.ProducerName : ''}`}>
+                        <b> {initialValues.Producer ? initialValues.Producer.ProducerName : ''}</b>
                     </Link>
                 </h5>
 
@@ -98,7 +138,7 @@ function Profileproduct(props) {
                     <span>Bảo Hành {initialValues.Warranties} Tháng</span>
                 </div>
                 <div className="profilebox__information__button">
-                    <button className="profilebox__information__button__atc">
+                    <button className="profilebox__information__button__atc" disabled={isLoading} style={isLoading ? { background: "rgba(0, 110, 92, 0.8)", color: "white" } : {}} onClick={() => handleAddToCart(initialValues)}>
                         <FontAwesomeIcon icon={faCartPlus} />
                         <span>Thêm Vào Giỏ</span>
                     </button>

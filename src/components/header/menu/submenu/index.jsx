@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './submenu.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducer } from 'features/product/producerslice';
+import { unwrapResult } from '@reduxjs/toolkit';
+import PartLoading from 'components/partloading';
+import PropTypes from 'prop-types';
 
 SubMenu.propTypes = {
-
+    handleClickMenu: PropTypes.func,
 };
+SubMenu.defaultProps = {
+    handleClickMenu: null
+}
 
 function SubMenu(props) {
-    const producer = useSelector(state => state.producer);
+    const { handleClickMenu } = props;
+    const dispatch = useDispatch();
+    const [listProducer, setListProducer] = useState([]);
+
+    useEffect(() => {
+        dispatch(getProducer({ limit: '8' })).then(res => {
+            const getPdcer = unwrapResult(res);
+            setListProducer(getPdcer.producer);
+        });
+    }, []);
+    const producer = listProducer;
+    const isLoading = useSelector(state => state.producer);
     return (
         <div className="submn">
-            <div className="submn__rowsubmenu">
+            <div className="submn__isLoading" style={isLoading.loading === false ? { display: 'none' } : { display: 'block' }}>
+                <PartLoading />
+            </div>
+            <div className="submn__rowsubmenu" style={isLoading.loading === true ? { opacity: 0, height: 0 } : { opacity: 1, height: 'auto' }}>
                 {
                     producer.map(pr => (
-                        <div className="submn__rowsubmenu__col" key={pr.id}>
+                        <div className="submn__rowsubmenu__col" key={pr._id}>
                             <div className="submn__rowsubmenu__col__boxlogo">
-                                <Link to={`/home/producer/${pr.title}`} >
-                                    <img src={pr.img} alt="a" />
+                                <Link to={`/home/category/producer/${pr.ProducerName}`} onClick={handleClickMenu}>
+                                    <img src={pr.ProducerIcon} alt="a" />
                                 </Link>
                             </div>
                         </div>
@@ -26,8 +47,8 @@ function SubMenu(props) {
 
             </div>
             <div className='submn__seeall'>
-                <Link to='/'>
-                    <button className='submn__seeall__bt'>
+                <Link to='/home/category/producer/listproducer'>
+                    <button className='submn__seeall__bt' onClick={handleClickMenu}>
                         Xem Tất Cả
                     </button>
                 </Link>

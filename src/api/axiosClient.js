@@ -4,12 +4,15 @@ import queryString from 'query-string';
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-        'content-type': 'aplication/json'
+        'content-type': 'application/json'
     },
-    paramsSerializer: params => queryString.stringify(params)
+    paramsSerializer: params => queryString.stringify(params),
 })
 
 axiosClient.interceptors.request.use(async (config) => {
+    const token = localStorage.getItem('AccessToken');
+    config.headers.Authorization = 'Bearer ' + token;
+
     return config;
 })
 

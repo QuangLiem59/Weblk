@@ -74,18 +74,18 @@
                 &:hover {
                     cursor: pointer;
                 }
-                &:hover > img {
-                    transform: scale(1.35);
-                }
-                &:hover > &__overlay,
-                &:hover &__overlay__button {
-                    transform: translateY(0);
-                    visibility: visible;
-                    opacity: 1;
-                }
-                &:hover &__overlay__salespercent__box {
-                    margin-left: 32.5%;
-                }
+                // &:hover > img {
+                //     transform: scale(1.35);
+                // }
+                // &:hover > &__overlay,
+                // &:hover &__overlay__button {
+                //     transform: translateY(0);
+                //     visibility: visible;
+                //     opacity: 1;
+                // }
+                // &:hover &__overlay__salespercent__box {
+                //     margin-left: 32.5%;
+                // }
             }
 
             &__boxcontent {
@@ -133,6 +133,18 @@
                 }
             }
         }
+        &:hover > &__body > &__body__boximage > img {
+            transform: scale(1.35);
+        }
+        &:hover > &__body > &__body__boximage > &__body__boximage__overlay,
+        &:hover > &__body > &__body__boximage &__body__boximage__overlay__button {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+        &:hover > &__body > &__body__boximage &__body__boximage__overlay__salespercent__box {
+            margin-left: 32.5%;
+        }
     }
     &:hover > &__box {
         box-shadow: 0 0 1rem #bdbdbd;
@@ -178,6 +190,9 @@
                             & > div {
                                 padding: 0 0.15rem;
                                 & > a > button {
+                                    font-size: 0.75rem;
+                                }
+                                & > button {
                                     font-size: 0.75rem;
                                 }
                             }
@@ -230,6 +245,9 @@
                             & > div {
                                 padding: 0 0.1rem;
                                 & > a > button {
+                                    font-size: 0.65rem;
+                                }
+                                & > button {
                                     font-size: 0.65rem;
                                 }
                             }

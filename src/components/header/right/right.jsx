@@ -13,7 +13,7 @@ Right.propTypes = {
 
 };
 
-function Right(props) {
+function Right() {
     const [onClickSearchMobile, setOnClickSearchMobile] = useState(false);
     const handleOnClickSearchMobile = () => {
         const v = !onClickSearchMobile;

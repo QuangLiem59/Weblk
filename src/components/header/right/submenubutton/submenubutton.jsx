@@ -8,7 +8,7 @@ Submenubutton.propTypes = {
 
 };
 
-function Submenubutton(props) {
+function Submenubutton() {
     const [onClickMenuMobile, setOnClickMenuMobile] = useState(false);
     const handleOnClickmobilemenu = () => {
         const v = !onClickMenuMobile;

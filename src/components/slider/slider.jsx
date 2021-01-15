@@ -9,7 +9,7 @@ SliderC.propTypes = {
 
 };
 
-function SliderC(props) {
+function SliderC() {
     const ref = useRef({});
 
     const NextSlide = () => {

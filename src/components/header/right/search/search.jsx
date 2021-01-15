@@ -2,38 +2,40 @@ import React, { useRef, useState } from 'react';
 import './search.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Form, Formik } from 'formik';
+import { useHistory } from 'react-router-dom';
 
 Search.propTypes = {
 
 };
 
-function Search(props) {
+function Search() {
+    const history = useHistory();
     const inputR = useRef(null);
-    const initialValues = {
-        values: ""
-    }
+    const [values, setValues] = useState('');
     const [searchClass, setSearchClass] = useState(false);
     const showSb = () => {
-        setSearchClass(true);
-        inputR.current.focus();
-
+        if (searchClass === false) {
+            setSearchClass(true);
+            inputR.current.focus();
+        }
     }
     const hideSb = () => {
         setSearchClass(false);
     }
+    const handleSetValues = (e) => {
+        setValues(e.target.value);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (values !== '') {
+            history.push('/home/category/search/' + values);
+        }
+    }
     return (
-        <Formik initialValues={initialValues}>
-            {formikProps => {
-                const { values, touched, errors } = formikProps;
-                return (
-                    <Form action="/" className="searchform">
-                        <input className={searchClass ? "search-input" : 'hide-search'} ref={inputR} onBlur={hideSb} type="search" name="svalue" placeholder="Gõ để tìm kiếm ..." />
-                        <button className="searchform__sm" type="submit" onClick={showSb}> <FontAwesomeIcon icon={faSearch} />  </button>
-                    </Form>
-                )
-            }}
-        </Formik>
+        <form className="searchform" onSubmit={(e) => handleSubmit(e)}>
+            <input className={searchClass ? "search-input" : 'hide-search'} ref={inputR} onBlur={hideSb} onChange={(e) => handleSetValues(e)} type="search" name="search" value={values} placeholder="Gõ để tìm kiếm ..." />
+            <button className="searchform__sm" type="submit" onClick={showSb}> <FontAwesomeIcon icon={faSearch} />  </button>
+        </form>
 
     );
 }

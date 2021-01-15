@@ -8,7 +8,7 @@ Header.propTypes = {
 
 };
 
-function Header(props) {
+function Header() {
     return (
         <div className="topmenu">
             <div className="topmenu__container">

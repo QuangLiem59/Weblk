@@ -6,16 +6,18 @@ import SalesProduct from 'features/product/components/SalesProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPrfProduct } from 'features/product/productslice';
 import { unwrapResult } from '@reduxjs/toolkit';
+import Loading from 'components/loading';
 
 ProductProfilePage.propTypes = {
 
 };
 
 
-function ProductProfilePage(props) {
+function ProductProfilePage() {
     const { productID } = useParams();
     const dispatch = useDispatch();
     const [profileProduct, setProfileProduct] = useState({});
+    const isLoading = useSelector(state => state.product.loading);
 
     useEffect(() => {
         dispatch(getPrfProduct(productID)).then(res => {
@@ -33,6 +35,9 @@ function ProductProfilePage(props) {
 
     return (
         <div className="profileproduct">
+            <div style={isLoading ? { "display": "block" } : { "display": "none" }}>
+                <Loading />
+            </div>
             <div className="profileproduct__container">
                 <div className="profileproduct__container__box">
                     <div className="profileproduct__container__box__location">
@@ -43,7 +48,7 @@ function ProductProfilePage(props) {
                                 </Link>
                             </li>
                             <li className="profileproduct__container__box__location__list__lc">
-                                <Link to="/">
+                                <Link to={"/home/category/" + profileProduct.Category}>
                                     {profileProduct ? profileProduct.Category : "Error"}
                                 </Link>
                             </li>

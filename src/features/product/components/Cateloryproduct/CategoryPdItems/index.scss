@@ -1,0 +1,591 @@
+.CategoryPdItems {
+    flex: 33%;
+    max-width: 33%;
+    padding: 0 1rem;
+    overflow: hidden;
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s ease-in-out 0s;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        &__body {
+            &__boximage {
+                width: 100%;
+                height: 15rem;
+                margin-bottom: 0.3rem;
+                border-radius: 0.5rem 0.5rem 0 0;
+                overflow: hidden;
+                position: relative;
+                & > img {
+                    width: 100%;
+                    height: 100%;
+                    // image-rendering: pixelated;
+                    // vertical-align: text-bottom;
+                    object-fit: contain;
+                    border-radius: 0.5rem;
+                    transition: all 0.5s ease-in-out 0s;
+                }
+                &__overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(100, 90, 90, 0.8);
+                    transition: all 0.3s ease-in-out 0s;
+                    visibility: hidden;
+                    opacity: 0;
+                    &__salespercent {
+                        position: absolute;
+                        top: 10%;
+                        width: 100%;
+                        height: 20%;
+                        &__box {
+                            width: 35%;
+                            font-weight: 400;
+                            font-size: 17px;
+                            background-color: rgba(252, 0, 0, 0.8);
+                            text-align: center;
+                            border-radius: 1rem;
+                            transition: all 0.3s ease-in-out 0s;
+                            box-shadow: 0 0 5px #bdbdbd;
+                        }
+                    }
+                    &__button {
+                        width: 100%;
+                        height: 100%;
+
+                        display: flex;
+                        flex-flow: row nowrap;
+                        align-items: center;
+                        justify-content: center;
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out 0s;
+                        transform: translateY(1rem);
+                        & > div {
+                            padding: 0 0.5rem;
+                        }
+                    }
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+                // &:hover > img {
+                //     transform: scale(1.35);
+                // }
+                // &:hover > &__overlay,
+                // &:hover &__overlay__button {
+                //     transform: translateY(0);
+                //     visibility: visible;
+                //     opacity: 1;
+                // }
+                // &:hover &__overlay__salespercent__box {
+                //     margin-left: 32.5%;
+                // }
+            }
+
+            &__boxcontent {
+                padding: 0 1rem;
+                margin-bottom: 0.1rem;
+                height: 2.6rem;
+                overflow: hidden;
+            }
+            &__boxcontent > a > h5 {
+                font-weight: 500;
+                font-size: 0.9rem;
+                line-height: 1.3rem;
+                color: black;
+                min-height: 2.6rem;
+                text-align: center;
+                transition: all 0.2s ease-in-out 0s;
+            }
+            &__boxcontent > a {
+                text-decoration: none;
+            }
+            &__boxcontent > a:hover > h5 {
+                color: #bdbdbd;
+            }
+        }
+        &__foot {
+            padding: 0 0.6rem 0.6rem 0.6rem;
+            min-height: 3.8rem;
+            &__sale {
+                line-height: 1.5rem;
+                font-size: 19px;
+                text-align: center;
+                margin-bottom: 0.3rem;
+                color: rgba($color: #2c2c2c, $alpha: 1);
+                font-style: normal;
+                font-weight: 500;
+                cursor: default;
+                &__up {
+                    color: red;
+                }
+                &__down {
+                    font-size: 15px;
+                    color: #bdbdbd;
+                    font-weight: 400;
+                    text-decoration: line-through;
+                }
+            }
+        }
+        &:hover > &__body > &__body__boximage > img {
+            transform: scale(1.35);
+        }
+        &:hover > &__body > &__body__boximage > &__body__boximage__overlay,
+        &:hover > &__body > &__body__boximage &__body__boximage__overlay__button {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+        &:hover > &__body > &__body__boximage &__body__boximage__overlay__salespercent__box {
+            margin-left: 32.5%;
+        }
+    }
+    &:hover > &__box {
+        box-shadow: 0 0 1rem #bdbdbd;
+    }
+}
+#vnd {
+    text-decoration: underline;
+}
+@media screen and(max-width:1250px) and(min-width:1064px) {
+    .CategoryPdItems {
+        padding: 0 0.8rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 13rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 13px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.3rem;
+                                & > a > button {
+                                    font-size: 0.9rem;
+                                }
+                                & > button {
+                                    font-size: 0.9rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.3rem;
+                    margin-bottom: 0.1rem;
+                    height: 2.8rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.95rem;
+                    line-height: 1.4rem;
+                    min-height: 2.8rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 3rem;
+                &__sale {
+                    line-height: 1.4rem;
+                    font-size: 16px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:1063px) and(min-width:974px) {
+    .CategoryPdItems {
+        padding: 0 0.8rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 12rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 12px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.2rem;
+                                & > a > button {
+                                    font-size: 0.8rem;
+                                }
+                                & > button {
+                                    font-size: 0.8rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.2rem;
+                    margin-bottom: 0.1rem;
+                    height: 2.6rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.9rem;
+                    line-height: 1.3rem;
+                    min-height: 2.6rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.8rem;
+                &__sale {
+                    line-height: 1.3rem;
+                    font-size: 15px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:973px) and(min-width:881px) {
+    .CategoryPdItems {
+        flex: 33%;
+        max-width: 33%;
+        padding: 0 0.5rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 10rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 11px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.1rem;
+                                & > a > button {
+                                    font-size: 0.7rem;
+                                }
+                                & > button {
+                                    font-size: 0.7rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.1rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.4rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.8rem;
+                    line-height: 1.2rem;
+                    min-height: 2.4rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.6rem;
+                &__sale {
+                    line-height: 1.2rem;
+                    font-size: 13px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:880px) and(min-width:720px) {
+    .CategoryPdItems {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 0.5rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 13rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 13px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.2rem;
+                                & > a > button {
+                                    font-size: 0.9rem;
+                                }
+                                & > button {
+                                    font-size: 0.9rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.2rem;
+                    margin-bottom: 0.1rem;
+                    height: 2.6rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.9rem;
+                    line-height: 1.3rem;
+                    min-height: 2.6rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.8rem;
+                &__sale {
+                    line-height: 1.3rem;
+                    font-size: 14px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:719px) and(min-width:550px) {
+    .CategoryPdItems {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 0.2rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 11.5rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 11px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.1rem;
+                                & > a > button {
+                                    font-size: 0.7rem;
+                                }
+                                & > button {
+                                    font-size: 0.7rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.1rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.4rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.8rem;
+                    line-height: 1.2rem;
+                    min-height: 2.4rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.6rem;
+                &__sale {
+                    line-height: 1.2rem;
+                    font-size: 13px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:549px) and(min-width:439px) {
+    .CategoryPdItems {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 0.3rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 12rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 13px;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.15rem;
+                                & > a > button {
+                                    font-size: 0.75rem;
+                                }
+                                & > button {
+                                    font-size: 0.75rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.5rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.4rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 0.85rem;
+                    line-height: 1.2rem;
+                    min-height: 2.4rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.4rem 0.4rem 0.4rem;
+                min-height: 2.5rem;
+                &__sale {
+                    line-height: 1.25rem;
+                    font-size: 15px;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:438px) and(min-width:350px) {
+    .CategoryPdItems {
+        flex: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 15rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 1rem;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.5rem;
+                                & > a > button {
+                                    font-size: 1rem;
+                                }
+                                & > button {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.5rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.2rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 1rem;
+                    line-height: 1.3rem;
+                    min-height: 2.6rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.8rem;
+                &__sale {
+                    line-height: 1.3rem;
+                    font-size: 1rem;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:349px) {
+    .CategoryPdItems {
+        flex: 100%;
+        max-width: 100%;
+        padding: 0;
+        &__box {
+            &__body {
+                &__boximage {
+                    height: 15rem;
+                    &__overlay {
+                        &__salespercent {
+                            &__box {
+                                font-size: 1rem;
+                            }
+                        }
+                        &__button {
+                            & > div {
+                                padding: 0 0.3rem;
+                                & > a > button {
+                                    font-size: 1rem;
+                                }
+                                & > button {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__boxcontent {
+                    padding: 0 0.5rem;
+                    margin-bottom: 0.05rem;
+                    height: 2.2rem;
+                    overflow: hidden;
+                }
+                &__boxcontent > a > h5 {
+                    font-size: 1rem;
+                    line-height: 1.3rem;
+                    min-height: 2.6rem;
+                }
+            }
+            &__foot {
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                min-height: 2.8rem;
+                &__sale {
+                    line-height: 1.3rem;
+                    font-size: 1rem;
+                    margin-bottom: 0.2rem;
+                    &__down {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}

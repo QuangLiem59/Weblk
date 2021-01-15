@@ -5,7 +5,7 @@ Footer.propTypes = {
 
 };
 
-function Footer(props) {
+function Footer() {
     return (
         <div className="footer">
             <div className="footer__container">

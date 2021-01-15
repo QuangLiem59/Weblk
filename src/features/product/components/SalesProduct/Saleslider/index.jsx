@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Saleslider.scss";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ProductItemSales from '../ProductItemsales';
 import Banner from 'constant/banner';
 import { useState } from 'react';
@@ -48,10 +48,10 @@ const st = {
         }
     ]
 };
-function Saleslider(props) {
+function Saleslider() {
     const dispatch = useDispatch();
     const [listSaleProduct, setListSaleProduct] = useState([]);
-    const [params, setParams] = useState({ page: '1', limit: '10', 'Sale[gt]': '0' });
+    const [params] = useState({ page: '1', limit: '10', 'Sale[gt]': '0' });
 
     useEffect(() => {
         dispatch(getProduct(params)).then(res => {

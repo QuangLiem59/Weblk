@@ -1,54 +1,35 @@
-import ProducerIcon from "constant/producericon";
+import producerApi from "api/producerApi";
 
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+
+export const getProducer = createAsyncThunk('producer/getproducer', async (params) => {
+    const listProducer = await producerApi.getAll(params);
+    return listProducer
+});
 
 const producer = createSlice({
     name: 'producer',
-    initialState: [
-        {
-            id: 1,
-            title: 'AKG',
-            img: ProducerIcon.akg
-        },
-        {
-            id: 2,
-            title: 'Apple',
-            img: ProducerIcon.apple
-        },
-        {
-            id: 3,
-            title: 'TEAC',
-            img: ProducerIcon.teac
-        },
-        {
-            id: 4,
-            title: 'Partron',
-            img: ProducerIcon.partron
-        },
-        {
-            id: 5,
-            title: 'Beyerdynamic',
-            img: ProducerIcon.Beyerdynamic
-        },
-        {
-            id: 6,
-            title: 'STAX',
-            img: ProducerIcon.stax
-        },
-        {
-            id: 7,
-            title: 'Advanced',
-            img: ProducerIcon.advanced
-        },
-        {
-            id: 8,
-            title: 'Audeze',
-            img: ProducerIcon.Audeze
-        },
-    ],
+    initialState: {
+        producer: {},
+        loading: false,
+        error: ''
+    },
     reducers: {
 
+    }, extraReducers: {
+        [getProducer.pending]: (state) => {
+            state.loading = true;
+        },
+        [getProducer.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        },
+        [getProducer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.producer = action.payload;
+        }
     }
+
 });
 const { reducer, action } = producer;
 export default reducer; 

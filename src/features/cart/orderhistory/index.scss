@@ -1,0 +1,1094 @@
+.OrderHistory {
+    &__container {
+        max-width: 1360px;
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        &__location {
+            width: 100%;
+            padding: 0 1rem;
+            &__list {
+                width: 100%;
+                list-style: none;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                border-bottom: 0.03rem solid #bbbbbb;
+                padding-bottom: 0.5rem;
+                padding-top: 0.5rem;
+                &__lc {
+                    padding-right: 0.5rem;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    & > a {
+                        color: #696969;
+                        text-decoration: none;
+                    }
+                    & + ::before {
+                        content: "";
+                        display: inline-block;
+                        width: 0.7rem;
+                        height: 0.7rem;
+                        border-bottom: 0.09rem solid #bdbdbd;
+                        border-right: 0.09rem solid #bdbdbd;
+                        transform: rotate(-45deg);
+                        margin: 0 0.8rem 0 0.1rem;
+                    }
+                }
+            }
+        }
+        &__box {
+            width: 100%;
+            padding: 1rem;
+            &__list-order {
+                &__title {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: 1rem;
+                    border-bottom: 1px solid #636363;
+                    &__1 {
+                        flex: 8.5;
+                        max-width: calc(8.5 / 12 * 100%);
+                        & > h2 {
+                            width: fit-content;
+                            margin: 0;
+                            display: inline-block;
+                            font-weight: bold;
+                        }
+                        & > span {
+                            font-size: 1.1rem;
+                            margin-left: 1rem;
+                            color: rgb(165, 165, 165);
+                        }
+                    }
+                    &__2 {
+                        flex: 1;
+                        max-width: calc(100% / 12);
+                        & > h5 {
+                            margin: 0;
+                            font-size: 1.1rem;
+                            font-weight: 700;
+                            color: rgb(139, 139, 139);
+                            text-align: center;
+                        }
+                    }
+                    &__3 {
+                        flex: 1.5;
+                        max-width: calc(1.5 / 12 * 100%);
+                        & > h5 {
+                            margin: 0;
+                            font-size: 1.1rem;
+                            font-weight: 700;
+                            color: rgb(139, 139, 139);
+                            text-align: center;
+                        }
+                    }
+                    &__4 {
+                        flex: 1;
+                        max-width: calc(100% / 12);
+                        & > h5 {
+                            margin: 0;
+                            font-size: 1.1rem;
+                            font-weight: 700;
+                            color: rgb(139, 139, 139);
+                            text-align: center;
+                        }
+                    }
+                }
+                &__list {
+                    width: 100%;
+                    padding: 0 0 1rem 0;
+                    &__body {
+                        &__row {
+                            display: flex;
+                            align-items: center;
+                            padding: 2rem 1rem;
+                            color: rgb(99, 99, 99);
+                            border-bottom: 1px solid #bdbdbd;
+                            font-size: 1.1rem;
+                            text-align: center;
+                            word-wrap: break-word;
+                            font-weight: bold;
+                            &__username {
+                                flex: 1.5;
+                                max-width: calc(1.5 / 12 * 100%);
+                                padding: 0 0.5rem;
+                                color: rgb(0, 150, 155);
+                            }
+                            &__email {
+                                flex: 2;
+                                max-width: calc(100% / 6);
+                                padding: 0 0.5rem;
+                            }
+                            &__numberphone {
+                                flex: 1.5;
+                                max-width: calc(1.5 / 12 * 100%);
+                                padding: 0 0.5rem;
+                                color: rgb(2, 175, 146);
+                            }
+                            &__address {
+                                flex: 3.5;
+                                max-width: calc(3.5 / 12 * 100%);
+                                padding: 0 0.5rem;
+                                color: rgb(43, 198, 226);
+                            }
+                            &__status {
+                                flex: 1;
+                                max-width: calc(100% / 12);
+                                padding: 0 0.5rem;
+                                &__1 {
+                                    border: 2px solid rgb(6, 214, 179);
+                                    background: rgb(6, 214, 179);
+                                    padding: 0.25rem 1.25rem;
+                                    border-radius: 0.8rem;
+                                    color: white;
+                                    box-shadow: 0 0 1rem rgb(6, 214, 179);
+                                    cursor: pointer;
+                                }
+                                &__2 {
+                                    border: 2px solid rgb(204, 48, 0);
+                                    background: rgb(204, 48, 0);
+                                    padding: 0.25rem 1.25rem;
+                                    border-radius: 0.8rem;
+                                    color: rgb(255, 255, 255);
+                                    box-shadow: 0 0 1rem rgb(204, 48, 0);
+                                    cursor: pointer;
+                                }
+                            }
+                            &__price {
+                                flex: 1.5;
+                                max-width: calc(1.5 / 12 * 100%);
+
+                                color: rgb(216, 0, 0);
+                                & > span {
+                                    padding: 0 0.5rem;
+                                }
+                            }
+                            &__details {
+                                flex: 1;
+                                max-width: calc(100% / 12);
+                                &__button {
+                                    margin-bottom: 0;
+                                    padding: 0.2rem 1rem;
+                                    border: 2px solid rgb(43, 214, 226);
+                                    color: rgb(43, 214, 226);
+                                    border-radius: 1rem;
+                                    background: none;
+                                    font-size: 1rem;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease-in-out 0s;
+                                    &:hover {
+                                        background: rgb(43, 214, 226);
+                                        color: white;
+                                        box-shadow: 0 0 1rem rgb(43, 214, 226);
+                                    }
+                                }
+                                &__overlay {
+                                    position: fixed;
+                                    display: none;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    background: rgba(44, 44, 44, 0.459);
+                                    animation: fadeIn linear 0.3s;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__listnull {
+                    padding: 5rem;
+                    font-size: 1.5rem;
+                    text-align: center;
+                    color: #bdbdbd;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    &__bt {
+                        padding: 0.5rem 2rem;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        background: none;
+                        color: rgb(175, 114, 0);
+                        border: 1px solid rgb(175, 114, 0);
+                        border-radius: 2rem;
+                        transition: all 0.3s ease-in-out 0s;
+                        width: fit-content;
+                        margin: 1rem auto;
+                        cursor: pointer;
+                        &:hover {
+                            background: rgb(175, 114, 0);
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#order-details:checked ~ .Order-Details {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media screen and(max-width:1350px) and(min-width:1101px) {
+    .OrderHistory {
+        &__container {
+            &__box {
+                padding: 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 1rem 0;
+                        &__1 {
+                            flex: 8.5;
+                            max-width: calc(8.5 / 12 * 100%);
+                            & > span {
+                                font-size: 1.1rem;
+                                margin-left: 1rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                font-size: 1.1rem;
+                            }
+                        }
+                        &__3 {
+                            flex: 1.5;
+                            max-width: calc(1.5 / 12 * 100%);
+                            & > h5 {
+                                font-size: 1.1rem;
+                            }
+                        }
+                        &__4 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                margin: 0;
+                                font-size: 1.1rem;
+                            }
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 2rem 0;
+                                font-size: 1rem;
+                                &__username {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__email {
+                                    flex: 2;
+                                    max-width: calc(100% / 6);
+                                    padding: 0 0.5rem;
+                                }
+                                &__numberphone {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__address {
+                                    flex: 3.5;
+                                    max-width: calc(3.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__status {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    padding: 0 0.5rem;
+                                    &__1 {
+                                        padding: 0.25rem 0.5rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.25rem 0.5rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    & > span {
+                                        padding: 0 0.5rem;
+                                    }
+                                }
+                                &__details {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    &__button {
+                                        padding: 0.2rem 0.5rem;
+                                        font-size: 1rem;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:1100px) and(min-width:900px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    &__lc {
+                        font-size: 1rem;
+                    }
+                }
+            }
+            &__box {
+                padding: 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 1rem 0;
+                        &__1 {
+                            flex: 8.5;
+                            max-width: calc(8.5 / 12 * 100%);
+                            & > h2 {
+                                font-size: 1.8rem;
+                            }
+                            & > span {
+                                font-size: 1rem;
+                                margin-left: 1rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                font-size: 1rem;
+                            }
+                        }
+                        &__3 {
+                            flex: 1.5;
+                            max-width: calc(1.5 / 12 * 100%);
+                            & > h5 {
+                                font-size: 1rem;
+                            }
+                        }
+                        &__4 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                margin: 0;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 1.5rem 0;
+                                font-size: 0.95rem;
+                                &__username {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__email {
+                                    flex: 2;
+                                    max-width: calc(100% / 6);
+                                    padding: 0 0.5rem;
+                                }
+                                &__numberphone {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__address {
+                                    flex: 3.5;
+                                    max-width: calc(3.5 / 12 * 100%);
+                                    padding: 0 0.5rem;
+                                }
+                                &__status {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    padding: 0 0.5rem;
+                                    &__1 {
+                                        padding: 0.25rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.25rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    & > span {
+                                        padding: 0 0.5rem;
+                                    }
+                                }
+                                &__details {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    &__button {
+                                        padding: 0.2rem 0.25rem;
+                                        font-size: 0.95rem;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:899px) and(min-width:700px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    &__lc {
+                        font-size: 0.9rem;
+                        & + ::before {
+                            width: 0.6rem;
+                            height: 0.6rem;
+                            margin: 0 0.8rem 0 0.1rem;
+                        }
+                    }
+                }
+            }
+            &__box {
+                padding: 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 1rem 0;
+                        &__1 {
+                            flex: 8.5;
+                            max-width: calc(8.5 / 12 * 100%);
+                            & > h2 {
+                                font-size: 1.5rem;
+                            }
+                            & > span {
+                                font-size: 0.9rem;
+                                margin-left: 1rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                font-size: 0.9rem;
+                            }
+                        }
+                        &__3 {
+                            flex: 1.5;
+                            max-width: calc(1.5 / 12 * 100%);
+                            & > h5 {
+                                font-size: 0.9rem;
+                            }
+                        }
+                        &__4 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                margin: 0;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 1rem 0;
+                                font-size: 0.8rem;
+                                &__username {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.25rem;
+                                }
+                                &__email {
+                                    flex: 2;
+                                    max-width: calc(100% / 6);
+                                    padding: 0 0.25rem;
+                                }
+                                &__numberphone {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.25rem;
+                                }
+                                &__address {
+                                    flex: 3.5;
+                                    max-width: calc(3.5 / 12 * 100%);
+                                    padding: 0 0.25rem;
+                                }
+                                &__status {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    padding: 0 0.25rem;
+                                    &__1 {
+                                        padding: 0.25rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.2rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    & > span {
+                                        padding: 0 0.25rem;
+                                    }
+                                }
+                                &__details {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    &__button {
+                                        padding: 0.2rem;
+                                        font-size: 0.7rem;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:699px) and(min-width:600px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    &__lc {
+                        font-size: 0.9rem;
+                        & + ::before {
+                            width: 0.6rem;
+                            height: 0.6rem;
+                            margin: 0 0.8rem 0 0.1rem;
+                        }
+                    }
+                }
+            }
+            &__box {
+                padding: 0 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 0.5rem 0;
+                        &__1 {
+                            flex: 8.5;
+                            max-width: calc(8.5 / 12 * 100%);
+                            & > h2 {
+                                font-size: 1.4rem;
+                            }
+                            & > span {
+                                font-size: 0.75rem;
+                                margin-left: 0.5rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                font-size: 0.75rem;
+                            }
+                        }
+                        &__3 {
+                            flex: 1.5;
+                            max-width: calc(1.5 / 12 * 100%);
+                            & > h5 {
+                                font-size: 0.75rem;
+                            }
+                        }
+                        &__4 {
+                            flex: 1;
+                            max-width: calc(100% / 12);
+                            & > h5 {
+                                margin: 0;
+                                font-size: 0.75rem;
+                            }
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 1rem 0;
+                                font-size: 0.75rem;
+                                &__username {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.2rem;
+                                }
+                                &__email {
+                                    flex: 2;
+                                    max-width: calc(100% / 6);
+                                    padding: 0 0.2rem;
+                                }
+                                &__numberphone {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    padding: 0 0.2rem;
+                                }
+                                &__address {
+                                    flex: 3.5;
+                                    max-width: calc(3.5 / 12 * 100%);
+                                    padding: 0 0.2rem;
+                                }
+                                &__status {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    padding: 0 0.2rem;
+                                    &__1 {
+                                        padding: 0.2rem 0.1rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.2rem 0.1rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 1.5;
+                                    max-width: calc(1.5 / 12 * 100%);
+                                    & > span {
+                                        padding: 0 0.2rem;
+                                    }
+                                }
+                                &__details {
+                                    flex: 1;
+                                    max-width: calc(100% / 12);
+                                    &__button {
+                                        padding: 0.2rem 0.1rem;
+                                        font-size: 0.65rem;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:599px) and(min-width:500px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    &__lc {
+                        font-size: 0.9rem;
+                        & + ::before {
+                            width: 0.6rem;
+                            height: 0.6rem;
+                            margin: 0 0.8rem 0 0.1rem;
+                        }
+                    }
+                }
+            }
+            &__box {
+                padding: 0 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 0.5rem 0;
+                        &__1 {
+                            flex: 12;
+                            max-width: 100%;
+                            & > h2 {
+                                font-size: 1.2rem;
+                            }
+                            & > span {
+                                font-size: 0.8rem;
+                                margin-left: 0.3rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__3 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__4 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 1rem 0;
+                                font-size: 0.75rem;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: space-around;
+                                &__username {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.3rem;
+                                    font-size: 1rem;
+                                }
+                                &__email {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__numberphone {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__address {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__status {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 1rem 0.1rem;
+                                    &__1 {
+                                        padding: 0.3rem 1rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.3rem 1rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.2rem;
+                                    font-size: 0.9rem;
+                                }
+                                &__details {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.5rem 0;
+                                    &__button {
+                                        padding: 0.2rem 1rem;
+                                        font-size: 0.7rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:499px) and(min-width:350px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    &__lc {
+                        font-size: 0.9rem;
+                        & + ::before {
+                            width: 0.6rem;
+                            height: 0.6rem;
+                            margin: 0 0.8rem 0 0.1rem;
+                        }
+                    }
+                }
+            }
+            &__box {
+                padding: 0 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 0.5rem 0;
+                        &__1 {
+                            flex: 12;
+                            max-width: 100%;
+                            & > h2 {
+                                font-size: 1.2rem;
+                            }
+                            & > span {
+                                font-size: 0.8rem;
+                                margin-left: 0.3rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__3 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__4 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 1rem 0;
+                                font-size: 0.75rem;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: space-around;
+                                &__username {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.3rem;
+                                    font-size: 1rem;
+                                }
+                                &__email {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__numberphone {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__address {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__status {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 1rem 0.1rem;
+                                    &__1 {
+                                        padding: 0.3rem 1rem;
+                                        border-radius: 0.8rem;
+                                    }
+                                    &__2 {
+                                        background: rgb(204, 48, 0);
+                                        padding: 0.3rem 1rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.2rem;
+                                    font-size: 0.9rem;
+                                }
+                                &__details {
+                                    flex: 8;
+                                    max-width: calc(8 / 12 * 100%);
+                                    padding: 0.5rem 0;
+                                    &__button {
+                                        padding: 0.2rem 1rem;
+                                        font-size: 0.7rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and(max-width:349px) {
+    .OrderHistory {
+        &__container {
+            &__location {
+                &__list {
+                    margin-bottom: 0.5rem;
+                    &__lc {
+                        font-size: 0.75rem;
+                        padding-right: 0.25rem;
+                        & + ::before {
+                            width: 0.35rem;
+                            height: 0.35rem;
+                            margin: 0 0.5rem 0 0.1rem;
+                        }
+                    }
+                }
+            }
+            &__box {
+                padding: 0 1rem;
+                &__list-order {
+                    &__title {
+                        padding: 0.25rem 0;
+                        &__1 {
+                            flex: 12;
+                            max-width: 100%;
+                            & > h2 {
+                                font-size: 1rem;
+                            }
+                            & > span {
+                                font-size: 0.7rem;
+                                margin-left: 0.2rem;
+                            }
+                        }
+                        &__2 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__3 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                        &__4 {
+                            flex: 0;
+                            max-width: 0%;
+                            display: none;
+                        }
+                    }
+                    &__list {
+                        padding: 0 0 1rem 0;
+                        &__body {
+                            &__row {
+                                padding: 0.5rem 0;
+                                font-size: 0.7rem;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: space-around;
+                                &__username {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.25rem;
+                                    font-size: 1rem;
+                                }
+                                &__email {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__numberphone {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__address {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.1rem;
+                                }
+                                &__status {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.8rem 0.1rem;
+                                    &__1 {
+                                        padding: 0.3rem 1rem;
+                                    }
+                                    &__2 {
+                                        padding: 0.3rem 1rem;
+                                    }
+                                }
+                                &__price {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.2rem;
+                                    font-size: 0.8rem;
+                                }
+                                &__details {
+                                    flex: 10;
+                                    max-width: calc(10 / 12 * 100%);
+                                    padding: 0.3rem 0;
+                                    &__button {
+                                        padding: 0.2rem 1rem;
+                                        font-size: 0.7rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__listnull {
+                        padding: 5rem;
+                        font-size: 1.5rem;
+                        &__bt {
+                            padding: 0.5rem 2rem;
+                            font-size: 1rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

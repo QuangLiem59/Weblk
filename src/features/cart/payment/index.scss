@@ -1,0 +1,243 @@
+.Payment {
+    position: fixed;
+    top: 6rem;
+    left: 25%;
+    width: 50%;
+    opacity: 0;
+    display: none;
+    transform: translateY(50%);
+    animation: fadeIns linear 0.5s;
+    z-index: 1;
+    &__box {
+        height: 100%;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem #000000;
+        background: #252525cb;
+        padding: 0.5rem 5rem;
+        text-transform: initial;
+        font-weight: bold;
+        &__title {
+            color: blanchedalmond;
+            width: 100%;
+            text-align: center;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            padding: 2rem 1rem;
+        }
+        & .ant-form-item-label {
+            flex: 0 0 25%;
+            & > label {
+                color: white;
+            }
+        }
+        &__footer {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-around;
+            &__order {
+                padding: 0.5rem 4rem;
+                border: 1px solid rgb(75, 75, 75);
+                border-radius: 2rem;
+                color: white;
+                background: rgb(75, 75, 75);
+                text-transform: uppercase;
+                font-size: 1rem;
+                transition: all 0.3s ease-in-out 0s;
+                &:hover {
+                    background: none;
+                    border: 1px solid white;
+                }
+            }
+            &__close {
+                padding: 0.5rem 5rem;
+                border: 1px solid rgb(77, 77, 77);
+                border-radius: 2rem;
+                color: rgb(197, 197, 197);
+                background: none;
+                text-transform: uppercase;
+                font-size: 1rem !important;
+                transition: all 0.3s ease-in-out 0s;
+                &:hover {
+                    background: rgb(77, 77, 77);
+                    color: rgb(255, 255, 255);
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIns {
+    from {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and(max-width:1300px) and(min-width:1001px) {
+    .Payment {
+        top: 6rem;
+        left: 20%;
+        width: 60%;
+        &__box {
+            padding: 0.5rem 2rem;
+            &__title {
+                font-size: 1.8rem;
+                padding: 2rem 1rem;
+            }
+            & .ant-form-item-label {
+                flex: 0 0 25%;
+            }
+            &__footer {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                &__order {
+                    padding: 0.5rem 4rem;
+                    font-size: 1rem;
+                }
+                &__close {
+                    padding: 0.5rem 5rem;
+                    border-radius: 2rem;
+                    font-size: 1rem !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:1000px) and(min-width:701px) {
+    .Payment {
+        top: 6rem;
+        left: 15%;
+        width: 70%;
+        &__box {
+            padding: 0.5rem 2rem;
+            &__title {
+                font-size: 1.6rem;
+                padding: 2rem 1rem;
+            }
+            & .ant-form-item-label {
+                flex: 0 0 30%;
+            }
+            &__footer {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                &__order {
+                    padding: 0.5rem 2.2rem;
+                    font-size: 0.9rem;
+                }
+                &__close {
+                    padding: 0.5rem 3.2rem;
+                    border-radius: 2rem;
+                    font-size: 0.9rem !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:700px) and(min-width:576px) {
+    .Payment {
+        top: 6rem;
+        left: 10%;
+        width: 80%;
+        &__box {
+            padding: 0.5rem 1.5rem;
+            &__title {
+                font-size: 1.4rem;
+                padding: 2rem 1rem;
+            }
+            & .ant-form-item-label {
+                flex: 0 0 30%;
+            }
+            &__footer {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                &__order {
+                    padding: 0.5rem 3rem;
+                    font-size: 0.85rem;
+                }
+                &__close {
+                    padding: 0.5rem 3.8rem;
+                    border-radius: 2rem;
+                    font-size: 0.85rem !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:575px) and(min-width:350px) {
+    .Payment {
+        top: 5.5rem;
+        left: 5%;
+        width: 90%;
+        &__box {
+            padding: 0.5rem 1.5rem;
+            &__title {
+                font-size: 1.4rem;
+                padding: 1rem;
+            }
+            &__footer {
+                padding: 0.5rem 0;
+                margin-bottom: 1rem;
+                &__order {
+                    padding: 0.5rem 1.5rem;
+                    font-size: 0.8rem;
+                }
+                &__close {
+                    padding: 0.5rem 2.5rem;
+                    border-radius: 2rem;
+                    font-size: 0.8rem !important;
+                }
+            }
+        }
+    }
+    .ant-form .ant-form-item {
+        margin-bottom: 1rem;
+    }
+    .ant-form .ant-form-item .ant-form-item-label {
+        padding: 0 0 0.3rem 0;
+    }
+}
+
+@media screen and(max-width:349px) {
+    .Payment {
+        top: 5.5rem;
+        left: 2.5%;
+        width: 95%;
+        animation: fadeIns linear 0.3s;
+        &__box {
+            padding: 0.5rem 1rem;
+            &__title {
+                font-size: 1.3rem;
+                padding: 1rem;
+            }
+            &__footer {
+                padding: 0.5rem 0;
+                margin-bottom: 1rem;
+                &__order {
+                    padding: 0.5rem 1rem;
+                    font-size: 0.8rem;
+                }
+                &__close {
+                    padding: 0.5rem 2rem;
+                    border-radius: 2rem;
+                    font-size: 0.8rem !important;
+                }
+            }
+        }
+    }
+    .ant-form .ant-form-item {
+        margin-bottom: 1rem;
+    }
+    .ant-form .ant-form-item .ant-form-item-label {
+        padding: 0 0 0.3rem 0;
+    }
+}

@@ -4,31 +4,24 @@ import NotFound from 'components/notfound';
 import MainProductPage from './pages/MainProductPage/MainProductPage';
 import ProductProfilePage from './pages/ProductProfilePage/ProductProfilePage';
 import CateloryProductPage from './pages/CateloryProductPage/CateloryProductPage';
-import { useSelector } from 'react-redux';
-import Loading from 'components/loading';
-import { useState } from 'react';
 
 ProductPage.propTypes = {
 
 };
 
-function ProductPage(props) {
-    const isLoading = useSelector(state => state.product.loading);
+function ProductPage() {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'auto' });
     });
 
     const match = useRouteMatch();
-    console.log(isLoading);
     return (
         <div>
-            <div style={isLoading ? { "display": "block" } : { "display": "none" }}>
-                <Loading />
-            </div>
             <Switch>
                 <Route exact path={match.url} component={MainProductPage} />
                 <Route exact path={`${match.url}/:productID`} component={ProductProfilePage} />
                 <Route path={`${match.url}/producer/:producer`} component={CateloryProductPage} />
+                <Route path={`${match.url}/category/`} component={CateloryProductPage} />
                 <Route component={NotFound} />
             </Switch>
         </div>

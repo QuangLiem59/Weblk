@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './NewProducts.scss';
 import { Link } from 'react-router-dom';
 import ProductItem from '../ProductItem';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getProduct } from 'features/product/productslice';
 import { unwrapResult } from '@reduxjs/toolkit';
 
@@ -12,7 +12,7 @@ NewProducts.propTypes = {
 
 
 
-function NewProducts(props) {
+function NewProducts() {
     const dispatch = useDispatch();
     const [listNewProduct, setListNewProduct] = useState([]);
     const [params, setParams] = useState({ page: '1', limit: '10', News: 'true' });
@@ -45,7 +45,7 @@ function NewProducts(props) {
                     }
                 </div>
                 <div className='MainNewsProduct__container__seeall'>
-                    <Link to='/'>
+                    <Link to='/home/category/status/News'>
                         <button className='MainNewsProduct__container__seeall__bt'>
                             Xem Tất Cả
                         </button>
