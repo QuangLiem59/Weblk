@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
 import { Form, Input, message, Select } from 'antd';
@@ -6,6 +6,8 @@ import 'antd/dist/antd.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addOrder, getListOrder } from '../orderslice';
+import AddressData from '../../../data.json';
+import TextArea from 'antd/lib/input/TextArea';
 
 Payment.propTypes = {
     userprofile: PropTypes.object,
@@ -19,7 +21,19 @@ function Payment(props) {
     const history = useHistory();
     const dispatch = useDispatch();
     const { userprofile } = props;
-    console.log(userprofile);
+    const [form] = Form.useForm();
+
+    const [city, setCity] = useState('');
+    const [district, setDistrict] = useState('');
+
+
+    useEffect(() => {
+        form.resetFields(['district']);
+        form.resetFields(['commune']);
+    }, [city]);
+    useEffect(() => {
+        form.resetFields(['commune']);
+    }, [district]);
 
     const layout = {
         labelCol: {
@@ -30,8 +44,10 @@ function Payment(props) {
         },
     };
     const onFinish = async (values) => {
+        const { city, district, commune, incubation } = values;
+        const address = `${incubation} - ${commune} - ${district} - ${city}`;
         try {
-            await dispatch(addOrder({ "numberphone": values.numberphone, "cart": userprofile.cart, "address": values.address }))
+            await dispatch(addOrder({ "numberphone": values.numberphone, "cart": userprofile.cart, "address": address }))
             await dispatch(getListOrder());
             message.loading("Payment...", 1).then(() => message.success("Đặt Hàng Thành Công!"))
             history.push('/cart/orderhistory');
@@ -40,6 +56,8 @@ function Payment(props) {
             message.error("Đặt Hàng Thất Bại!");
         }
     };
+
+
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
@@ -66,6 +84,12 @@ function Payment(props) {
             value: '94',
         },
     ]);
+    const onChangeCity = (City) => {
+        setCity(City);
+    };
+    const onChangeDistrict = (District) => {
+        setDistrict(District);
+    }
     return (
         <div className="Payment">
             <div className="Payment__box">
@@ -73,6 +97,7 @@ function Payment(props) {
                     {...layout}
                     name="Payment"
                     fields={fields}
+                    form={form}
                     initialValues={{
                         remember: true,
                     }}
@@ -81,36 +106,6 @@ function Payment(props) {
                     <div className="Payment__box__title">
                         Thanh Toán
                     </div>
-                    <Form.Item
-                        label="Name"
-                        name="username"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Username is required!"
-                            },
-                        ]}
-                        hasFeedback
-                    >
-                        <Input placeholder="Name..." />
-                    </Form.Item>
-                    <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                            {
-                                type: "email",
-                                message: "Email is not a valid email!"
-                            },
-                            {
-                                required: true,
-                                message: "Email is required!"
-                            }
-                        ]}
-                        hasFeedback
-                    >
-                        <Input placeholder="Email..." />
-                    </Form.Item>
                     <Form.Item
                         label="Number Phone"
                         name="numberphone"
@@ -129,18 +124,109 @@ function Payment(props) {
                             }}
                             placeholder="Number Phone..." />
                     </Form.Item>
+
                     <Form.Item
-                        label="Address"
-                        name="address"
+                        name="city"
+                        label="Tỉnh/Thành phố"
+                        hasFeedback
                         rules={[
                             {
                                 required: true,
-                                message: "Address is required!"
+                                message: 'Please choose your province/city !',
+                            },
+                        ]}
+                    >
+                        <Select
+                            showSearch
+                            placeholder="Tỉnh/Thành phố"
+                            optionFilterProp="children"
+                            onChange={onChangeCity}
+                            filterOption={(input, option) =>
+                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+                            {
+                                AddressData.map((city, index) => (
+                                    <Select.Option value={city.name} key={index}>{city.name}</Select.Option>
+                                ))
+                            }
+                        </Select >
+                    </Form.Item>
+
+                    <Form.Item
+                        name="district"
+                        label="Quận/Huyện"
+                        hasFeedback
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please choose your district !',
+                            },
+                        ]}
+                    >
+                        <Select
+                            showSearch
+                            placeholder="Quận/Huyện"
+                            optionFilterProp="children"
+                            onChange={onChangeDistrict}
+                            filterOption={(input, option) =>
+                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+                            {
+                                AddressData.map((itemCity) => itemCity.name === city && (
+                                    itemCity.huyen.map((huyen, index) => (
+                                        <Select.Option value={huyen.name} key={index}>{huyen.name}</Select.Option>
+                                    ))
+                                ))
+                            }
+                        </Select >
+                    </Form.Item>
+                    <Form.Item
+                        name="commune"
+                        label="Xã/Thị Trấn"
+                        hasFeedback
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please choose your commune !',
+                            },
+                        ]}
+                    >
+                        <Select
+                            showSearch
+                            placeholder="Xã/Thị Trấn"
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+                            {
+                                AddressData.map(itemCity => itemCity.name === city && (
+                                    itemCity.huyen.map(huyen => huyen.name === district && (
+                                        huyen.xa.sort().map((xa, index) => (
+                                            <Select.Option value={xa.name} key={index}>{xa.name}</Select.Option>
+                                        ))
+                                    ))
+                                ))
+                            }
+                        </Select >
+                    </Form.Item>
+
+                    <Form.Item
+                        name="incubation"
+                        label="Số Nhà"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Address is require !',
                             }
                         ]}
-                        hasFeedback
                     >
-                        <Input placeholder="Address..." />
+                        <TextArea
+                            placeholder="địa chỉ cụ thể: ấp, số nhà, tên đường..."
+                            rows={2}
+                        />
                     </Form.Item>
                     <div className="Payment__box__footer">
                         <button type="submit" className="Payment__box__footer__order">

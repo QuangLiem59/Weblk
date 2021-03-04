@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ProducerIC from './ProducerIcon';
 import PartLoading from 'components/partloading';
+import Loadmore from '../Loadmore';
 
 Producer.propTypes = {
     setF1: PropTypes.func,
@@ -26,7 +27,9 @@ function Producer(props) {
     const [sortByListActive, setSortByListActive] = useState(false);
     const [listProducers, setListProducers] = useState([]);
     const [listProducer, setListProducer] = useState([]);
-    const [params, setParams] = useState({ page: '1', limit: '10' });
+    const [listPrcLength, setListPrcLength] = useState(0);
+    const [page, setPage] = useState(1);
+    const [params, setParams] = useState({ limit: page * 10 });
 
     const isLoading = useSelector(state => state.producer);
 
@@ -37,9 +40,14 @@ function Producer(props) {
     })
 
     useEffect(() => {
+        setParams({ ...params, limit: page * 10 });
+    }, [page]);
+
+    useEffect(() => {
         dispatch(getProducer({ limit: 0 })).then(res => {
             const getPdcer = unwrapResult(res);
             setListProducers(getPdcer.producer);
+            setListPrcLength(getPdcer.producer.length);
         });
     }, []);
 
@@ -59,11 +67,11 @@ function Producer(props) {
         switch (vl) {
             case 'atz': return (
                 sortBy.current = 'A -> Z',
-                setParams({ page: '1', limit: '10', sort: 'ProducerName' })
+                setParams({ ...params, sort: 'ProducerName' })
             );
             case 'zta': return (
                 sortBy.current = 'Z -> A',
-                setParams({ page: '1', limit: '10', sort: '-ProducerName' })
+                setParams({ ...params, sort: '-ProducerName' })
             );
         }
     }
@@ -142,6 +150,7 @@ function Producer(props) {
                             <ProducerIC prc={prc} key={prc._id} />
                         ))
                     }
+                    <Loadmore listLength={listPrcLength} page={page} setPage={setPage} />
                 </div>
             </div>
         </div>

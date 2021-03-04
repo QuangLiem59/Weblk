@@ -144,6 +144,7 @@
             display: flex;
             flex-wrap: wrap;
             padding-left: 2rem;
+            min-height: 100rem;
         }
     }
 }
@@ -215,6 +216,7 @@
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
+                min-height: 80rem;
             }
         }
     }
@@ -283,6 +285,7 @@
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
+                min-height: 60rem;
             }
         }
     }
@@ -354,6 +357,7 @@
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
+                min-height: 30rem;
             }
         }
     }
@@ -430,6 +434,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 padding-left: 0;
+                min-height: 25rem;
             }
         }
     }
@@ -506,6 +511,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 padding-left: 0;
+                min-height: 20rem;
             }
         }
     }

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProduct } from 'features/product/productslice';
 import PartLoading from 'components/partloading';
+import Pagi from '../Pagination';
+
 
 ProductTypes.propTypes = {
     setF1: PropTypes.func,
@@ -22,7 +24,9 @@ function ProductTypes(props) {
     const [sbIsActive, setSbIsActive] = useState('newest');
     const [listCategoryProduct, setlistCategoryProduct] = useState([]);
     const [sortByListActive, setSortByListActive] = useState(false);
-    const [params, setParams] = useState({ page: '1', limit: '10', Category: Type });
+    const [listCPLength, setListCPLength] = useState(0);
+    const [page, setPage] = useState(1);
+    const [params, setParams] = useState({ limit: 10, page: page, Category: Type });
     const sortBy = useRef('Mới Nhất');
 
     const { setF1, setF2 } = props;
@@ -39,16 +43,45 @@ function ProductTypes(props) {
     }, [params]);
 
     useEffect(() => {
-        setSbIsActive('newest');
-        sortBy.current = 'Mới Nhất';
-        setParams({ page: '1', limit: '10', Category: Type })
+        async function changeType() {
+            setSbIsActive('newest');
+            sortBy.current = 'Mới Nhất';
+            await setPage(1);
+            setParams({ limit: 10, page: 1, Category: Type })
+        }
+        changeType();
     }, [Type]);
 
     useEffect(() => {
         setF2(Type);
         setF1('Category');
     })
-
+    useEffect(() => {
+        switch (sbIsActive) {
+            case 'newest': return (
+                sortBy.current = 'Mới Nhất',
+                setParams({ page: page, limit: '10', Category: Type, sort: '-createdAt' })
+            );
+            case 'oldest': return (
+                sortBy.current = 'Củ Nhất',
+                setParams({ page: page, limit: '10', Category: Type, sort: 'createdAt' })
+            );
+            case 'lowtohigh': return (
+                sortBy.current = 'Giá Từ Thấp Đến Cao',
+                setParams({ page: page, limit: '10', Category: Type, sort: 'Price' })
+            );
+            case 'hightolow': return (
+                sortBy.current = 'Giá Từ Cao Đến Thấp',
+                setParams({ page: page, limit: '10', Category: Type, sort: '-Price' })
+            );
+        }
+    }, [page]);
+    useEffect(() => {
+        dispatch(getProduct({ limit: 0, Category: Type })).then(res => {
+            const getPdc = unwrapResult(res);
+            setListCPLength(getPdc.product.length);
+        });
+    }, [Type]);
 
     const handleSetSB = (vl) => {
         setSbIsActive(vl);
@@ -79,6 +112,9 @@ function ProductTypes(props) {
         if (sortByListActive) {
             setSortByListActive(false);
         }
+    }
+    const onChangePage = (pages) => {
+        setPage(pages);
     }
     return (
         <div className="Product-types" onClick={handleInactiveSbList}>
@@ -148,6 +184,9 @@ function ProductTypes(props) {
                             <ProductItem Product={product} key={product._id} />
                         ))
                     }
+                </div>
+                <div className="Product-types__list-items__pagination">
+                    <Pagi pageSize={10} onChangePage={onChangePage} length={listCPLength} page={page} />
                 </div>
             </div>
         </div>

@@ -2,17 +2,14 @@ import React from 'react';
 import './salesproduct.scss';
 import { Link } from 'react-router-dom';
 import Saleslider from './Saleslider';
-import { useSelector } from 'react-redux';
 
 SalesProduct.propTypes = {
 
 };
 
 function SalesProduct() {
-    const isLoading = useSelector(state => state.product.loading);
-
     return (
-        <div className="MainSalesProduct" style={isLoading === true ? { display: 'none' } : { display: 'block' }}>
+        <div className="MainSalesProduct" >
             <div className="MainSalesProduct__container">
                 <div className="MainSalesProduct__container__maintitle">
                     <h2> Khuyến Mãi </h2>

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProduct } from 'features/product/productslice';
 import PartLoading from 'components/partloading';
+import Loadmore from '../Loadmore';
+import Pagi from '../Pagination';
 
 StatusProduct.propTypes = {
     setF1: PropTypes.func,
@@ -22,7 +24,9 @@ function StatusProduct(props) {
     const [sbIsActive, setSbIsActive] = useState('newest');
     const [listCategoryProduct, setlistCategoryProduct] = useState([]);
     const [sortByListActive, setSortByListActive] = useState(false);
-    const [params, setParams] = useState({ page: '1', limit: '10' });
+    const [listCTLength, setListCTLength] = useState(0);
+    const [page, setPage] = useState(1);
+    const [params, setParams] = useState({ limit: 10, page: page });
     const sortBy = useRef('Mới Nhất');
 
     const { setF1, setF2 } = props;
@@ -39,13 +43,17 @@ function StatusProduct(props) {
     }, [params]);
 
     useEffect(() => {
-        setSbIsActive('newest');
-        sortBy.current = 'Mới Nhất';
-        switch (status) {
-            case 'News': return setParams({ page: '1', limit: '10', News: true });
-            case 'Hots': return setParams({ page: '1', limit: '10', Hots: true });
-            case 'Sales': return setParams({ page: '1', limit: '10', 'Sale[gt]': 0 });
+        async function changeStatus() {
+            setSbIsActive('newest');
+            sortBy.current = 'Mới Nhất';
+            await setPage(1);
+            switch (status) {
+                case 'News': return setParams({ limit: 10, page: page, News: true });
+                case 'Hots': return setParams({ limit: 10, page: page, Hots: true });
+                case 'Sales': return setParams({ limit: 10, page: page, 'Sale[gt]': 0 });
+            }
         }
+        changeStatus();
     }, [status]);
 
     useEffect(() => {
@@ -53,6 +61,51 @@ function StatusProduct(props) {
         setF1(status);
     })
 
+    useEffect(() => {
+        switch (status) {
+            case 'News':
+                switch (sbIsActive) {
+                    case 'newest': return setParams({ limit: 10, page: page, News: true, sort: '-createdAt' });
+                    case 'oldest': return setParams({ limit: 10, page: page, News: true, sort: 'createdAt' });
+                    case 'lowtohigh': return setParams({ limit: 10, page: page, News: true, sort: 'Price' });
+                    case 'hightolow': return setParams({ limit: 10, page: page, News: true, sort: '-Price' });
+                }
+            case 'Hots':
+                switch (sbIsActive) {
+                    case 'newest': return setParams({ limit: 10, page: page, Hots: true, sort: '-createdAt' });
+                    case 'oldest': return setParams({ limit: 10, page: page, Hots: true, sort: 'createdAt' });
+                    case 'lowtohigh': return setParams({ limit: 10, page: page, Hots: true, sort: 'Price' });
+                    case 'hightolow': return setParams({ limit: 10, page: page, Hots: true, sort: '-Price' });
+                }
+            case 'Sales':
+                switch (sbIsActive) {
+                    case 'newest': return setParams({ limit: 10, page: page, 'Sale[gt]': 0, sort: '-createdAt' });
+                    case 'oldest': return setParams({ limit: 10, page: page, 'Sale[gt]': 0, sort: 'createdAt' });
+                    case 'lowtohigh': return setParams({ limit: 10, page: page, 'Sale[gt]': 0, sort: 'Price' });
+                    case 'hightolow': return setParams({ limit: 10, page: page, 'Sale[gt]': 0, sort: '-Price' });
+                }
+        }
+    }, [page]);
+
+    useEffect(() => {
+        function getCTlength() {
+            switch (status) {
+                case 'News': return dispatch(getProduct({ limit: 0, News: true })).then(res => {
+                    const getCt = unwrapResult(res);
+                    setListCTLength(getCt.product.length);
+                });
+                case 'Hots': return dispatch(getProduct({ limit: 0, Hots: true })).then(res => {
+                    const getCt = unwrapResult(res);
+                    setListCTLength(getCt.product.length);
+                });
+                case 'Sales': return dispatch(getProduct({ limit: 0, 'Sale[gt]': 0 })).then(res => {
+                    const getCt = unwrapResult(res);
+                    setListCTLength(getCt.product.length);
+                });
+            }
+        }
+        getCTlength();
+    }, [status]);
 
     const handleSetSB = (vl) => {
         setSbIsActive(vl);
@@ -60,25 +113,25 @@ function StatusProduct(props) {
         switch (vl) {
             case 'newest': return (
                 sortBy.current = 'Mới Nhất',
-                setParams({ ...params, sort: '-createdAt' })
+                setParams({ ...params, page: 1, sort: '-createdAt' })
             );
             case 'oldest': return (
                 sortBy.current = 'Củ Nhất',
-                setParams({ ...params, sort: 'createdAt' })
+                setParams({ ...params, page: 1, sort: 'createdAt' })
             );
             case 'lowtohigh': return (
                 sortBy.current = 'Giá Từ Thấp Đến Cao',
                 status === 'Sales' ?
-                    setParams({ ...params, sort: 'Sale' })
+                    setParams({ ...params, page: 1, sort: 'Sale' })
                     :
-                    setParams({ ...params, sort: 'Price' })
+                    setParams({ ...params, page: 1, sort: 'Price' })
             );
             case 'hightolow': return (
                 sortBy.current = 'Giá Từ Cao Đến Thấp',
                 status === 'Sales' ?
-                    setParams({ ...params, sort: '-Sale' })
+                    setParams({ ...params, page: 1, sort: '-Sale' })
                     :
-                    setParams({ ...params, sort: '-Price' })
+                    setParams({ ...params, page: 1, sort: '-Price' })
             );
         }
     }
@@ -89,6 +142,9 @@ function StatusProduct(props) {
         if (sortByListActive) {
             setSortByListActive(false);
         }
+    }
+    const onChangePage = (pages) => {
+        setPage(pages);
     }
     return (
         <div className="StatusProduct" onClick={handleInactiveSbList}>
@@ -165,6 +221,9 @@ function StatusProduct(props) {
                             <ProductItem Product={product} key={product._id} />
                         ))
                     }
+                </div>
+                <div className="StatusProduct__list-items__pagination">
+                    <Pagi pageSize={10} onChangePage={onChangePage} length={listCTLength} page={page} />
                 </div>
             </div>
         </div>
