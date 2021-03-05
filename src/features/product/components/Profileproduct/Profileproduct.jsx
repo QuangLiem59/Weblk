@@ -25,18 +25,12 @@ function Profileproduct(props) {
     const token = localStorage.getItem('AccessToken');
     const history = useHistory();
     const isLoading = useSelector(state => state.user.loading);
-    const [isSelected, setIsSelected] = useState(false);
 
     const handleAddToCart = async (initialValues) => {
         if (!token) {
             return (
                 message.warning('Please Login to use cart!'),
                 history.push('/user/login')
-            )
-        }
-        if (isSelected) {
-            return (
-                message.warning('This product has been added to cart!')
             )
         }
         const check = cart.every(item => {
@@ -46,7 +40,6 @@ function Profileproduct(props) {
             try {
                 await dispatch(addToCart({ cart: [...cart, { ...initialValues, quantity: 1 }] }));
                 await dispatch(getUserInfor());
-                setIsSelected(true);
                 message.success('Product added!')
             } catch (err) {
                 message.warning(err.response.data.message);
@@ -72,8 +65,8 @@ function Profileproduct(props) {
     }
     return (
         <div className="profilebox">
-            <div className="profilebox__mobilebutton">
-                <button className="profilebox__mobilebutton__atc">
+            <div className="profilebox__mobilebutton" disabled={isLoading} style={isLoading ? { background: "#9e320096", color: "white", boxShadow: "0 0 0.5rem #682600" } : {}}>
+                <button className="profilebox__mobilebutton__atc" onClick={() => handleAddToCart(initialValues)}>
                     <FontAwesomeIcon icon={faCartPlus} />
                     <span>Thêm Vào Giỏ</span>
                 </button>
