@@ -52,6 +52,7 @@ function StatusProduct(props) {
                 case 'Hots': return setParams({ limit: 10, page: page, Hots: true });
                 case 'Sales': return setParams({ limit: 10, page: page, 'Sale[gt]': 0 });
             }
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
         changeStatus();
     }, [status]);
@@ -62,6 +63,7 @@ function StatusProduct(props) {
     })
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
         switch (status) {
             case 'News':
                 switch (sbIsActive) {

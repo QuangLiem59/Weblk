@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProduct } from 'features/product/productslice';
 import PartLoading from 'components/partloading';
+import Pagi from '../Pagination';
 
 CateloryProduct.propTypes = {
     setF1: PropTypes.func,
@@ -30,7 +31,9 @@ function CateloryProduct(props) {
     const [sortByListActive, setSortByListActive] = useState(false);
     const [listProducers, setListProducers] = useState([]);
     const [listCategoryProduct, setListCategoryProduct] = useState([]);
-    const [params, setParams] = useState({ page: '1', limit: '10', Producer: producerName });
+    const [listCPPLength, setListCPPLength] = useState(0);
+    const [page, setPage] = useState(1);
+    const [params, setParams] = useState({ page: page, limit: 12, Producer: producerName });
 
 
     useEffect(() => {
@@ -41,8 +44,12 @@ function CateloryProduct(props) {
     }, [params]);
 
     useEffect(() => {
-        setParams({ page: '1', limit: '10', Producer: producerName })
+        setParams({ page: 1, limit: 12, Producer: producerName })
     }, [producerName]);
+
+    useEffect(() => {
+        setParams({ page: page, limit: 12, Producer: producerName })
+    }, [page]);
 
     useEffect(() => {
         setF2(producerName);
@@ -56,25 +63,32 @@ function CateloryProduct(props) {
         });
     }, []);
 
+    useEffect(() => {
+        dispatch(getProduct({ limit: 0, Producer: producerName })).then(res => {
+            const getPdc = unwrapResult(res);
+            setListCPPLength(getPdc.product.length);
+        });
+    }, [producerName]);
+
     const handleSetSB = (vl) => {
         setSbIsActive(vl);
         handleActiveSbList();
         switch (vl) {
             case 'newest': return (
                 sortBy.current = 'Mới Nhất',
-                setParams({ page: '1', limit: '10', Producer: producerName, sort: '-createdAt' })
+                setParams({ page: '1', limit: '12', Producer: producerName, sort: '-createdAt' })
             );
             case 'oldest': return (
                 sortBy.current = 'Củ Nhất',
-                setParams({ page: '1', limit: '10', Producer: producerName, sort: 'createdAt' })
+                setParams({ page: '1', limit: '12', Producer: producerName, sort: 'createdAt' })
             );
             case 'lowtohigh': return (
                 sortBy.current = 'Giá Từ Thấp Đến Cao',
-                setParams({ page: '1', limit: '10', Producer: producerName, sort: 'Price' })
+                setParams({ page: '1', limit: '12', Producer: producerName, sort: 'Price' })
             );
             case 'hightolow': return (
                 sortBy.current = 'Giá Từ Cao Đến Thấp',
-                setParams({ page: '1', limit: '10', Producer: producerName, sort: '-Price' })
+                setParams({ page: '1', limit: '12', Producer: producerName, sort: '-Price' })
             );
         }
     }
@@ -85,6 +99,9 @@ function CateloryProduct(props) {
         if (sortByListActive) {
             setSortByListActive(false);
         }
+    }
+    const onChangePage = (pages) => {
+        setPage(pages);
     }
     return (
         <div className="Ctgry-container" onClick={handleInactiveSbList}>
@@ -165,6 +182,9 @@ function CateloryProduct(props) {
                             <CategoryPdItems Product={product} key={product._id} />
                         ))
                     }
+                </div>
+                <div className="Ctgry-container__list-items__pagination">
+                    <Pagi pageSize={12} onChangePage={onChangePage} length={listCPPLength} page={page} />
                 </div>
             </div>
         </div>

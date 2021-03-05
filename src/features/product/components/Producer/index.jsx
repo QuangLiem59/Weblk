@@ -150,6 +150,8 @@ function Producer(props) {
                             <ProducerIC prc={prc} key={prc._id} />
                         ))
                     }
+                </div>
+                <div className="Producercpn-container__list-items__loadmore">
                     <Loadmore listLength={listPrcLength} page={page} setPage={setPage} />
                 </div>
             </div>

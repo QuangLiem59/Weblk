@@ -48,6 +48,7 @@ function ProductTypes(props) {
             sortBy.current = 'Mới Nhất';
             await setPage(1);
             setParams({ limit: 10, page: 1, Category: Type })
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
         changeType();
     }, [Type]);
@@ -57,6 +58,7 @@ function ProductTypes(props) {
         setF1('Category');
     })
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
         switch (sbIsActive) {
             case 'newest': return (
                 sortBy.current = 'Mới Nhất',
